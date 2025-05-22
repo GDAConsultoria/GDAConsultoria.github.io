@@ -1,0 +1,736 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Transação TO01 | Criar de SWAP de Juros</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1e2c6937-1e17-805c-8b71-f21837144af3" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/iterate_blue.svg"/></div><h1 class="page-title">Transação TO01 | Criar de SWAP de Juros</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-person"><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(71, 70, 68, 0.6);flex-shrink:0" class="typesPerson"><path d="M10.9536 7.90088C12.217 7.90088 13.2559 6.79468 13.2559 5.38525C13.2559 4.01514 12.2114 2.92017 10.9536 2.92017C9.70142 2.92017 8.65137 4.02637 8.65698 5.39087C8.6626 6.79468 9.69019 7.90088 10.9536 7.90088ZM4.4231 8.03003C5.52368 8.03003 6.42212 7.05859 6.42212 5.83447C6.42212 4.63843 5.51245 3.68945 4.4231 3.68945C3.33374 3.68945 2.41846 4.64966 2.41846 5.84009C2.42407 7.05859 3.32251 8.03003 4.4231 8.03003ZM1.37964 13.168H5.49561C4.87231 12.292 5.43384 10.6074 6.78711 9.51807C6.18628 9.14746 5.37769 8.87231 4.4231 8.87231C1.95239 8.87231 0.262207 10.6917 0.262207 12.1628C0.262207 12.7974 0.548584 13.168 1.37964 13.168ZM7.50024 13.168H14.407C15.4009 13.168 15.7322 12.8423 15.7322 12.2864C15.7322 10.8489 13.8679 8.88354 10.9536 8.88354C8.04492 8.88354 6.17505 10.8489 6.17505 12.2864C6.17505 12.8423 6.50635 13.168 7.50024 13.168Z"></path></svg></span>Owner</th><td><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">J</span></span>Julian Cidade</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(71, 70, 68, 0.6);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(71, 70, 68, 0.6);flex-shrink:0" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Created time</th><td><time>@27 de abril de 2025 06:35</time></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(71, 70, 68, 0.6);flex-shrink:0" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Last edited time 1</th><td><time>@7 de maio de 2025 10:37</time></td></tr><tr class="property-row property-row-status"><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(71, 70, 68, 0.6);flex-shrink:0" class="typesStatus"><path d="M8.75488 1.02344C8.75488 0.613281 8.41309 0.264648 8.00293 0.264648C7.59277 0.264648 7.25098 0.613281 7.25098 1.02344V3.11523C7.25098 3.51855 7.59277 3.86719 8.00293 3.86719C8.41309 3.86719 8.75488 3.51855 8.75488 3.11523V1.02344ZM3.91504 5.0293C4.20215 5.31641 4.69434 5.32324 4.97461 5.03613C5.26855 4.74902 5.26855 4.25684 4.98145 3.96973L3.53906 2.52051C3.25195 2.2334 2.7666 2.21973 2.47949 2.50684C2.19238 2.79395 2.18555 3.28613 2.47266 3.57324L3.91504 5.0293ZM10.9629 4.01758C10.6826 4.30469 10.6826 4.79688 10.9697 5.08398C11.2568 5.37109 11.749 5.36426 12.0361 5.07715L13.4854 3.62793C13.7725 3.34082 13.7725 2.84863 13.4785 2.55469C13.1982 2.27441 12.7061 2.27441 12.4189 2.56152L10.9629 4.01758ZM15.0234 8.78906C15.4336 8.78906 15.7822 8.44727 15.7822 8.03711C15.7822 7.62695 15.4336 7.28516 15.0234 7.28516H12.9385C12.5283 7.28516 12.1797 7.62695 12.1797 8.03711C12.1797 8.44727 12.5283 8.78906 12.9385 8.78906H15.0234ZM0.975586 7.28516C0.56543 7.28516 0.223633 7.62695 0.223633 8.03711C0.223633 8.44727 0.56543 8.78906 0.975586 8.78906H3.07422C3.48438 8.78906 3.83301 8.44727 3.83301 8.03711C3.83301 7.62695 3.48438 7.28516 3.07422 7.28516H0.975586ZM12.0361 10.9902C11.749 10.71 11.2568 10.71 10.9629 10.9971C10.6826 11.2842 10.6826 11.7764 10.9697 12.0635L12.4258 13.5127C12.7129 13.7998 13.2051 13.793 13.4922 13.5059C13.7793 13.2256 13.7725 12.7266 13.4854 12.4395L12.0361 10.9902ZM2.52051 12.4395C2.22656 12.7266 2.22656 13.2188 2.50684 13.5059C2.79395 13.793 3.28613 13.7998 3.57324 13.5127L5.02246 12.0703C5.31641 11.7832 5.31641 11.291 5.03613 11.0039C4.74902 10.7168 4.25684 10.71 3.96973 10.9971L2.52051 12.4395ZM8.75488 12.9658C8.75488 12.5557 8.41309 12.207 8.00293 12.207C7.59277 12.207 7.25098 12.5557 7.25098 12.9658V15.0576C7.25098 15.4609 7.59277 15.8096 8.00293 15.8096C8.41309 15.8096 8.75488 15.4609 8.75488 15.0576V12.9658Z"></path></svg></span>Status</th><td><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>5. Em revisão Diego</span></td></tr></tbody></table></header><div class="page-body"><h3 id="1ecc6937-1e17-8075-af79-c5587d06fff4" class="block-color-blue">Objetivo:</h3><div id="1ecc6937-1e17-803e-9de9-d5ebfcee263e" class="column-list"><div id="1ecc6937-1e17-8037-8513-d95fb950d04c" style="width:68.75%" class="column"><figure class="block-color-red callout" style="white-space:pre-wrap;display:flex" id="1ecc6937-1e17-809c-b96e-d2921e8a77cf"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/bullseye_blue.svg"/></div><div style="width:100%"><mark class="highlight-default">Registrar um contrato de swap de taxas de juros, definindo os fluxos fixos e variáveis.</mark></div></figure><h3 id="1ecc6937-1e17-80c2-b032-f58df38699b0" class=""><mark class="highlight-blue">Dados desse Exemplo:</mark></h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1ecc6937-1e17-8052-ab84-d723e808768d"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/table_blue.svg"/></div><div style="width:100%"><blockquote id="1ecc6937-1e17-8049-ae06-e5bfdf90806f" class=""></blockquote></div></figure><p id="1ecc6937-1e17-80c6-ad2d-feb2a88a5953" class="">
+</p></div><div id="1ecc6937-1e17-805b-bbdb-d5bc8e6050a1" style="width:31.25%" class="column"><h3 id="1ecc6937-1e17-8088-bf6c-feb8f9d89070" class=""><mark class="highlight-blue">JIRA</mark></h3><p id="1ecc6937-1e17-807e-8d31-e323b4606f19" class="block-color-default"><a href="https://dexterityit.atlassian.net/browse/BPRACT-176">https://dexterityit.atlassian.net/browse/BPRACT-176</a></p><p id="1ecc6937-1e17-8081-9a49-d7009222e175" class="">
+</p><h3 id="1ecc6937-1e17-8028-aa1c-d0deea87fdd7" class="block-color-blue">Vídeo</h3><figure id="1ecc6937-1e17-8087-8f31-fb59aad9c642"><a href="" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href"></div></div></a></figure><p id="1ecc6937-1e17-8053-94a0-c7462827dd0e" class="">
+</p></div></div><h2 id="1ecc6937-1e17-8028-b748-f935b8631012" class=""><mark class="highlight-blue">1. Ações Iniciais</mark></h2><ul id="1ecc6937-1e17-805a-9d46-c6555d1b49b1" class="toggle"><li><details open=""><summary><strong>1</strong><mark class="highlight-default"><strong>.</strong></mark><mark class="highlight-purple"><strong> </strong></mark><mark class="highlight-default"><strong>Acessar o App SAP Fiori</strong></mark></summary><div id="1ecc6937-1e17-8090-9c86-d5d23220da7c" class="column-list"><div id="1ecc6937-1e17-8023-a56e-f1d2061184c6" style="width:53.333333333333336%" class="column"><figure id="1ecc6937-1e17-80d4-beb9-ed288936b6b1" class="image" style="text-align:center"><a href="image.png"><img style="width:138.95834350585938px" src="image.png"/></a></figure></div><div id="1ecc6937-1e17-80bc-8377-d03c5b4b66d1" style="width:46.666666666666664%" class="column"><p id="1ecc6937-1e17-8060-8cab-f0a454c9c14d" class="">Procedimento:</p><ol type="1" id="1ecc6937-1e17-8053-aaad-fb741fa06bb3" class="numbered-list" start="1"><li>Abra  o app Criar derivativo de taxa de juros <mark class="highlight-default">(</mark><code>TO01</code><mark class="highlight-default">)</mark>.</li></ol><p id="1ecc6937-1e17-8013-a7a3-d8b7e0262a5b" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1ecc6937-1e17-80c4-a972-c4c77797e405"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/info-alternate_blue.svg"/></div><div style="width:100%"><p id="1ecc6937-1e17-8060-af08-eea76c05cea4" class="">Válido para contratos de SWAP e outros derivativos</p></div></figure></div></div></details></li></ul><hr id="1ecc6937-1e17-8001-9748-f79a3b785d70"/><ul id="1ecc6937-1e17-806b-ab49-c6b4942cd8a0" class="toggle"><li><details open=""><summary><strong>2. Entrada de dados do lançamento</strong></summary><div id="1ecc6937-1e17-8059-a450-e20032ff032e" class="column-list"><div id="1ecc6937-1e17-803c-bbed-e8529c81f631" style="width:56.25%" class="column"><figure id="1ecc6937-1e17-8033-a5eb-e7ba49ecd272" class="image"><a href="image%201.png"><img style="width:560.9765625px" src="image%201.png"/></a></figure></div><div id="1ecc6937-1e17-8074-b91b-e3bc96b1514a" style="width:43.75000000000001%" class="column"><p id="1ecc6937-1e17-80da-a6b2-d001aba9d760" class=""><strong>Procedimento:</strong></p><ol type="1" id="1ecc6937-1e17-8009-a22d-fa8ac98b7457" class="numbered-list" start="1"><li><strong>Empresa</strong>: <mark class="highlight-default">Exemplo:</mark><code>1000</code> </li></ol><ol type="1" id="1ecc6937-1e17-8074-8303-d899ba6ac611" class="numbered-list" start="2"><li><strong>Tipo do Produto:</strong>  <mark class="highlight-default">Exemplo:</mark><code>SWJ</code></li></ol><ol type="1" id="1ecc6937-1e17-80b3-9f76-e77f995d1799" class="block-color-default numbered-list" start="3"><li><strong>Tipo da Transação: </strong><mark class="highlight-default">Exemplo:</mark><code>301</code> </li></ol><ol type="1" id="1ecc6937-1e17-80f3-a549-ee71dc39022b" class="numbered-list" start="4"><li><strong>Parceiro de negócio</strong> utilizado: <mark class="highlight-default">Exemplo:</mark><mark class="highlight-red"><code>1000003980</code></mark></li></ol><ol type="1" id="1ecc6937-1e17-801c-8133-d391e154d1e6" class="numbered-list" start="5"><li>Portfólio: <mark class="highlight-default">Exemplo:</mark><mark class="highlight-red"><code>OTC_SWAP</code></mark><mark class="highlight-default">.</mark></li></ol><p id="1ecc6937-1e17-800f-8330-f92e92d11c5f" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1ecc6937-1e17-8004-b5e5-cbae6f0d0ef2"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/info-alternate_yellow.svg"/></div><div style="width:100%"><p id="1ecc6937-1e17-80e5-b87b-e441440c5b1c" class="">Tipo de produto, reflete o produto no mercado financeiro, para os processos de SWAP</p></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1ecc6937-1e17-8077-9de0-e23519ff2a31"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/info-alternate_yellow.svg"/></div><div style="width:100%"><p id="1ecc6937-1e17-80d0-b3da-e7500c5326f8" class="">Tipo de transação para SWAP determina o tipo de cálculo de juros </p><ul id="1ecc6937-1e17-80ed-9a24-f7953882564f" class="toggle"><li><details open=""><summary>Aqui são usados as seguintes opções: </summary><ul id="1ecc6937-1e17-80f0-a608-ca1119b8b542" class="bulleted-list"><li style="list-style-type:disc"><em><code>300</code></em><em>	</em>SWAP de Juros-Pagador<br/>(Ponta Ativa - Taxa Fixa / Ponta Passiva - Taxa Variável)<br/></li></ul><ul id="1ecc6937-1e17-8055-8c1c-d8e698b2a489" class="bulleted-list"><li style="list-style-type:disc"><em><code>301</code></em><em>	</em>SWAP de Juros-Recebedor<br/>(Ponta Ativa - Taxa Variável / Ponta Passiva - Taxa Fixa)<br/></li></ul><ul id="1ecc6937-1e17-8014-8aa5-f9b9a4fdde2a" class="bulleted-list"><li style="list-style-type:disc"><em><code>302</code></em><em>	</em>SWAP de Juros-Base<br/>(Ponta Ativa - Taxa Variável / Ponta Passiva - Taxa Variável)<br/></li></ul><ul id="1ecc6937-1e17-8080-b52f-fbb53fa8330a" class="bulleted-list"><li style="list-style-type:disc"><em><code>303</code></em><em>	</em>SWAP de Juros-Swap p/a swaption<br/>(Ponta Ativa - Taxa Fixa e Taxa Variável / Ponta Passiva - Taxa Fixa e Taxa Variável)<br/></li></ul></details></li></ul></div></figure><p id="1ecc6937-1e17-8046-b3de-fd1555b29028" class="">
+</p><p id="1ecc6937-1e17-8046-90e8-c3f5c12a49fb" class="">Clicar em <mark class="highlight-teal"><code>ENTRAR</code></mark>.</p></div></div></details></li></ul><hr id="1ecc6937-1e17-80af-9ce0-f48cd52aa500"/><h2 id="1ecc6937-1e17-80d0-89b9-f67cbb8149e6" class=""><mark class="highlight-blue">2. Estrutura do Contrato</mark></h2><ul id="1ecc6937-1e17-8088-9804-d854bd188d92" class="toggle"><li><details open=""><summary><strong>1. Entrada de dados da estrutura do Contrato</strong></summary><div id="1ecc6937-1e17-80a5-9e93-f87e01c358c3" class="column-list"><div id="1ecc6937-1e17-8052-af92-c0b359ea13a9" style="width:56.25%" class="column"><figure id="1ecc6937-1e17-8077-9912-dad1372fc53b" class="image"><a href="image%202.png"><img style="width:631.796875px" src="image%202.png"/></a></figure></div><div id="1ecc6937-1e17-80c0-baff-c3be3cc2657f" style="width:43.75%" class="column"><p id="1ecc6937-1e17-807b-8fa4-c2457bade000" class=""><strong>Procedimento:  </strong></p><ol type="1" id="1ecc6937-1e17-80ad-9a6f-c3d5e6f9b89c" class="numbered-list" start="1"><li><strong>Início:</strong> <mark class="highlight-default">Exemplo:</mark><code>07.05.2025</code></li></ol><ol type="1" id="1ecc6937-1e17-8053-b628-de86bc6e188f" class="numbered-list" start="2"><li><strong>Fim: </strong><mark class="highlight-default">Exemplo:</mark><code>07.06.2025</code></li></ol><ol type="1" id="1ecc6937-1e17-8081-ac8c-d956d5d29b59" class="numbered-list" start="3"><li><strong>Inclusive: </strong><mark class="highlight-default">Exemplo:</mark><code>Fim Incluído</code></li></ol><ol type="1" id="1ecc6937-1e17-80f9-807d-faf768fe14a5" class="numbered-list" start="4"><li>Calendário: <mark class="highlight-default">Exemplo:</mark><code>T1</code></li></ol></div></div><hr id="1ecc6937-1e17-802c-a911-c585a42fbe7d"/><ul id="1ecc6937-1e17-80ec-ba53-f9aa2d2b47d1" class="toggle"><li><details open=""><summary>Juros de Saída (Ponta Ativa)</summary><div id="1ecc6937-1e17-8052-ac78-ef45827d2de4" class="column-list"><div id="1ecc6937-1e17-808d-b9a6-d6e70029a0cd" style="width:68.75%" class="column"><figure id="1ecc6937-1e17-80f9-b601-cc82a6959810" class="image"><a href="image%203.png"><img style="width:752.98828125px" src="image%203.png"/></a></figure></div><div id="1ecc6937-1e17-80ab-ae03-dc61a7723389" style="width:31.249999999999993%" class="column"><p id="1ecc6937-1e17-803c-9339-ef3ab28e09b6" class=""><strong>Procedimento:  </strong></p><ol type="1" id="1ecc6937-1e17-807a-91a2-ef25ab8c22e5" class="numbered-list" start="5"><li><strong>Montante Nominal:</strong> <mark class="highlight-default">Exemplo:</mark><code>100.000,00</code> <code>BRL</code></li></ol><ol type="1" id="1ecc6937-1e17-80f8-b204-ec49b8268921" class="numbered-list" start="6"><li><strong>A partir de: </strong><mark class="highlight-default">Exemplo:</mark><code>07.05.2025</code></li></ol><ol type="1" id="1ecc6937-1e17-8007-a263-cb4ffcb21569" class="numbered-list" start="7"><li><strong>1ª data de venci: </strong><mark class="highlight-default">Exemplo:</mark><code>07.06.2025</code></li></ol><ol type="1" id="1ecc6937-1e17-80cb-a077-ea24db4cd31d" class="numbered-list" start="8"><li>Tít. juros flut.: <mark class="highlight-default">Exemplo:</mark><code>CDI</code></li></ol><ol type="1" id="1ecc6937-1e17-80e2-9b55-f579f78c72f3" class="numbered-list" start="9"><li>Mét. cálc. juros: <mark class="highlight-default">Exemplo:</mark><code>actW/252</code></li></ol><ol type="1" id="1ecc6937-1e17-80f1-a0c6-d7046132e7d9" class="numbered-list" start="10"><li>Calendário juros: <mark class="highlight-default">Exemplo:</mark><code>T1</code></li></ol></div></div></details></li></ul><hr id="1ecc6937-1e17-8085-bec1-ca6393424ca0"/><ul id="1ecc6937-1e17-80c9-b144-e9f6d8c9c043" class="toggle"><li><details open=""><summary>Juros de Entrada (Ponta Passiva)</summary><div id="1ecc6937-1e17-80d0-8a7e-fa9b44c2326c" class="column-list"><div id="1ecc6937-1e17-8077-b2b9-c1590257154c" style="width:68.75%" class="column"><figure id="1ecc6937-1e17-802c-a96d-d73978c77f74" class="image"><a href="image%204.png"><img style="width:752.98828125px" src="image%204.png"/></a></figure></div><div id="1ecc6937-1e17-8049-a7eb-fb8967e65425" style="width:31.249999999999993%" class="column"><p id="1ecc6937-1e17-80dc-8b3a-e30e48faaa4b" class=""><strong>Procedimento:  </strong></p><ol type="1" id="1ecc6937-1e17-8038-b3eb-db29296486b5" class="numbered-list" start="11"><li><strong>Montante Nominal:</strong> <mark class="highlight-default">Exemplo:</mark><code>100.000,00</code> <code>BRL</code></li></ol><ol type="1" id="1ecc6937-1e17-80b5-a09e-e21285924651" class="numbered-list" start="12"><li><strong>A partir de: </strong><mark class="highlight-default">Exemplo:</mark><code>07.05.2025</code></li></ol><ol type="1" id="1ecc6937-1e17-80d1-9c4a-f715be2adfda" class="numbered-list" start="13"><li><strong>1ª data de venci: </strong><mark class="highlight-default">Exemplo:</mark><code>07.06.2025</code></li></ol><ol type="1" id="1ecc6937-1e17-80d9-b3f8-cf384ad1f77a" class="numbered-list" start="14"><li>Taxa fixa: <mark class="highlight-default">Exemp</mark>lo:<code>2,25</code></li></ol><ol type="1" id="1ecc6937-1e17-8083-8302-d87089964ad8" class="block-color-default numbered-list" start="15"><li>Mét. cálc. juros: Exemplo:<code>actW/252</code></li></ol><ol type="1" id="1ecc6937-1e17-8029-b0fd-c31d562687ab" class="numbered-list" start="16"><li>Calendário juros: <mark class="highlight-default">Exemplo:</mark><code>T1</code></li></ol><p id="1ecc6937-1e17-80fe-b4b0-cfc7ba02c77e" class="">
+</p></div></div><p id="1ecc6937-1e17-808f-a091-dcc1af41ff4a" class="">
+</p></details></li></ul><hr id="1ecc6937-1e17-8074-8417-cef4229f9663"/></details></li></ul><ul id="1ecc6937-1e17-80eb-b2ba-cd0906b83d3d" class="toggle"><li><details open=""><summary><strong>2. Entrada de dados da conclusão do Contrato</strong></summary><div id="1ecc6937-1e17-801a-b5a5-c0c672558cae" class="column-list"><div id="1ecc6937-1e17-8077-a206-c741b33189ed" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-80f8-9290-e65dfb98c6dd" class="image"><a href="image%205.png"><img style="width:702.01171875px" src="image%205.png"/></a></figure></div><div id="1ecc6937-1e17-8082-ab33-e630997575e6" style="width:37.5%" class="column"><p id="1ecc6937-1e17-80f1-82f8-f6865dcc392e" class=""><strong>Procedimento:  </strong></p><ol type="1" id="1ecc6937-1e17-80db-a832-c259809e4a1c" class="numbered-list" start="1"><li>Data contrato:<mark class="highlight-default"> Exemplo:</mark><code>07.05.2025</code><strong> </strong>data de início do contrato</li></ol><ol type="1" id="1ecc6937-1e17-805d-a0b8-ea0af4836695" class="numbered-list" start="2"><li>Referência externa:<mark class="highlight-default"> Exemplo:</mark><code>CDI-100T</code> Use essa informação para facilitar a sua pesquisa no SAP.</li></ol><figure class="block-color-default callout" style="white-space:pre-wrap;display:flex" id="1ecc6937-1e17-8029-abef-de663a8c25d7"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/info-alternate_blue.svg"/></div><div style="width:100%"><p id="1ecc6937-1e17-806a-9316-f415318c81f5" class="">A informação referência externa, é transferida para o campo XREF do documento </p></div></figure></div></div></details></li></ul><hr id="1ecc6937-1e17-809f-81f4-d22707234122"/><h3 id="1ecc6937-1e17-80b4-a016-df3f481fb59e" class=""><mark class="highlight-blue">2.1. Estrutura de Juros</mark></h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1ecc6937-1e17-8077-a780-f33af84cf393"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/info-alternate_yellow.svg"/></div><div style="width:100%"><p id="1ecc6937-1e17-80c0-ad5f-f7829800003d" class="">Aqui vamos informar como é calculado os juros do contrato, esse procedimento é igual para todos os contratos com CDI.</p></div></figure><ul id="1ecc6937-1e17-801f-b6ba-fd60506850c5" class="toggle"><li><details open=""><summary><strong>1. Detalhes da Condição: </strong>Juros de Saída (Ponta Ativa)</summary><div id="1ecc6937-1e17-8067-a301-d850163c6696" class="column-list"><div id="1ecc6937-1e17-8039-acdb-c8071cdab7e1" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-80c5-92c7-d8bfc76b1a0a" class="image" style="text-align:center"><a href="image%206.png"><img style="width:432.98828125px" src="image%206.png"/></a></figure></div><div id="1ecc6937-1e17-8043-b447-d0e788658767" style="width:37.50000000000001%" class="column"><p id="1ecc6937-1e17-80df-ac13-f1acd7eeb670" class="">
+</p><p id="1ecc6937-1e17-809c-8951-c3e4b73a6c31" class="">
+</p><blockquote id="1ecc6937-1e17-8073-8a4b-f63b120a7a47" class="block-color-yellow">Neste momento iremos inserir os dados do cálculo de juros</blockquote><p id="1ecc6937-1e17-8056-8d3f-edc54fa76097" class="">
+</p><p id="1ecc6937-1e17-8001-852f-e665e4e18c15" class="">Clicar no botão.</p><p id="1ecc6937-1e17-800b-b666-e4355492c5a8" class="">
+</p></div></div><hr id="1ecc6937-1e17-80e9-a336-d929e7b44e35"/><ul id="1ecc6937-1e17-809e-8e05-e951ff55488e" class="toggle"><li><details open=""><summary>Montantes</summary><div id="1ecc6937-1e17-801e-91c9-d614565a8f99" class="column-list"><div id="1ecc6937-1e17-8065-8e05-e64f9a6f0934" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-8031-95e1-ecf99a5190ec" class="image"><a href="image%207.png"><img style="width:665.99609375px" src="image%207.png"/></a></figure></div><div id="1ecc6937-1e17-80c6-89f1-c2e0ee5147c4" style="width:37.5%" class="column"><p id="1ecc6937-1e17-8091-8bc1-f0853cc9c69c" class=""><strong>Insira os seguintes dados:</strong></p><ol type="1" id="1ecc6937-1e17-808e-a636-f92481a6b69c" class="numbered-list" start="1"><li>Tipo do cálculo de juros: <mark class="highlight-default">Exemplo:</mark><code>Cálculo de juros exponencial</code></li></ol><ol type="1" id="1ecc6937-1e17-80c6-8add-ee5896645353" class="numbered-list" start="2"><li>Freq. comp. juros: <mark class="highlight-default">Exemplo:</mark><code>Compensação de Juros Anual</code></li></ol><ol type="1" id="1ecc6937-1e17-8095-8c36-f727874c4ef7" class="numbered-list" start="3"><li>Mét. cálc. juros: <mark class="highlight-default">Exemplo:</mark><code>actW/252</code></li></ol><ol type="1" id="1ecc6937-1e17-8047-8ed1-f91b43ad899e" class="numbered-list" start="4"><li>Calendário de Juros: <mark class="highlight-default">Exemplo:</mark><code>T1</code></li></ol><ol type="1" id="1ecc6937-1e17-8021-88e5-d1be2d6976ed" class="numbered-list" start="5"><li>Taxa juros ref.:<mark class="highlight-default"> Exemplo:</mark><code>CDI</code></li></ol><p id="1ecc6937-1e17-8074-aed3-d35a088fba51" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1ecc6937-1e17-802f-aa25-e254c761988a"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/info-alternate_yellow.svg"/></div><div style="width:100%">Dependendo a versão do SAP, você poderá não estar vendo essa tela da forma que está apresentada, procure o consultor para maiores detalhes.</div></figure><p id="1ecc6937-1e17-8096-964f-da6012b375a6" class="">
+</p></div></div><hr id="1ecc6937-1e17-80fe-a017-d1687d1524a5"/><div id="1ecc6937-1e17-8035-aae1-d27ffc908631" class="column-list"><div id="1ecc6937-1e17-8057-aabc-d53d3eedc023" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-80a1-994c-d394cb7a9dae" class="image"><a href="image%208.png"><img style="width:684.53125px" src="image%208.png"/></a></figure></div><div id="1ecc6937-1e17-80e5-88a5-cdcb51941ed9" style="width:37.49999999999999%" class="column"><p id="1ecc6937-1e17-80be-8358-ce5e2b812c44" class="">
+</p><p id="1ecc6937-1e17-8048-8c6a-c91b18229e3c" class="">
+</p><blockquote id="1ecc6937-1e17-8017-97f6-caced797ad97" class="block-color-yellow">Neste momento iremos inserir a fórmula para cálculo de CDI + Spread.</blockquote><p id="1ecc6937-1e17-809b-909c-cac45a220bff" class="">
+</p><p id="1ecc6937-1e17-8003-a567-c4d99b722f57" class="">Clicar no botão.</p><p id="1ecc6937-1e17-801f-a0ec-e24dde7e44a3" class="">
+</p></div></div><hr id="1ecc6937-1e17-8039-8a4b-c843db6d278d"/><div id="1ecc6937-1e17-80cc-ba3d-d67a6c19bfd6" class="column-list"><div id="1ecc6937-1e17-8067-83fe-fcb91ab820a5" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-80f4-bcf5-c54d29b3aef2" class="image"><a href="image%209.png"><img style="width:1277.979248046875px" src="image%209.png"/></a></figure></div><div id="1ecc6937-1e17-80ab-919f-e52fe54f4d78" style="width:37.50000000000001%" class="column"><p id="1ecc6937-1e17-8027-a4ee-fef977eed203" class=""><strong>Procedimento:  </strong></p><ol type="1" id="1ecc6937-1e17-80c1-b2b4-dc8a678edbdb" class="numbered-list" start="1"><li>Ref.: <mark class="highlight-default">Exemplo:</mark><code>ZDI+</code></li></ol><p id="1ecc6937-1e17-8078-acc0-cd3e3e59cad9" class="">
+</p><p id="1ecc6937-1e17-8010-b3fc-c470b7b347bd" class="">Clicar em <mark class="highlight-teal"><code>OK</code></mark><mark class="highlight-default">.</mark></p></div></div><hr id="1ecc6937-1e17-80e0-aceb-e23e8587ab41"/><div id="1ecc6937-1e17-802d-9923-d2a141c949a1" class="column-list"><div id="1ecc6937-1e17-80ef-a45a-fec3b27c153e" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-802f-8d5e-ccf4c4f09c26" class="image" style="text-align:center"><a href="image%2010.png"><img style="width:490.0000305175781px" src="image%2010.png"/></a></figure></div><div id="1ecc6937-1e17-8060-8d1e-cf7b96779646" style="width:37.50000000000001%" class="column"><p id="1ecc6937-1e17-80f2-8c1a-cfa8e1fe0b49" class=""><strong>Procedimento:  </strong></p><ol type="1" id="1ecc6937-1e17-8094-99d6-e6d739574398" class="numbered-list" start="1"><li>Valor Variável (A): <mark class="highlight-default">Exemplo:</mark><code>CDI</code></li></ol><ol type="1" id="1ecc6937-1e17-8064-8d8e-d2d58ede1c22" class="numbered-list" start="2"><li>Valor Constante (B): <mark class="highlight-default">Exemplo:</mark><code>2,25</code></li></ol><p id="1ecc6937-1e17-8083-9cb4-c1adc205e7aa" class="">
+</p><p id="1ecc6937-1e17-80bf-bd82-cc5eec4115e9" class="">Clicar no <mark class="highlight-teal"><code>✅</code></mark>.</p><p id="1ecc6937-1e17-8002-a5e0-dcb985f9dc21" class="">
+</p></div></div><hr id="1ecc6937-1e17-80a6-9763-fbf4db5d2c24"/><div id="1ecc6937-1e17-806b-9cef-fad3cf73f3d3" class="column-list"><div id="1ecc6937-1e17-80d4-9afe-f02cd68f599f" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-80f0-b4f5-f471f2effc67" class="image"><a href="image%2011.png"><img style="width:662.9688110351562px" src="image%2011.png"/></a></figure></div><div id="1ecc6937-1e17-8094-a6e6-ded7e3c3c6af" style="width:37.49999999999999%" class="column"><p id="1ecc6937-1e17-808e-8154-e71e1fbd5a98" class="">
+</p><blockquote id="1ecc6937-1e17-80f4-9e8d-fc95ba7c08ec" class="block-color-yellow">Aqui  temos a fórmula contendo o índice de juros + o spread do contrato</blockquote><p id="1ecc6937-1e17-80d1-996c-d2cd0ff8bed5" class="">
+</p><p id="1ecc6937-1e17-80ae-9bb0-d86ff234b4a8" class="">Clicar na aba <mark class="highlight-teal"><code>DATAS</code></mark><mark class="highlight-default">.</mark></p><p id="1ecc6937-1e17-802d-9f36-cad0f07232ae" class="">
+</p></div></div></details></li></ul><hr id="1ecc6937-1e17-806e-af74-cb75fe3a91b8"/><ul id="1ecc6937-1e17-80ff-ab6e-eefcd005ddd8" class="toggle"><li><details open=""><summary>Datas</summary><div id="1ecc6937-1e17-8030-aaa6-d5ce3f59e37d" class="column-list"><div id="1ecc6937-1e17-807e-892c-c752a8c6a3ce" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-8077-9686-ff2a2a74b8be" class="image"><a href="image%2012.png"><img style="width:684.53125px" src="image%2012.png"/></a></figure></div><div id="1ecc6937-1e17-8009-a093-fa315c13eeb9" style="width:37.50000000000001%" class="column"><p id="1ecc6937-1e17-802e-b2a7-d80aafe4f507" class=""><strong>Procedimento:  </strong></p><ol type="1" id="1ecc6937-1e17-8046-b88a-cd72024b8be2" class="numbered-list" start="1"><li>Calendário: <mark class="highlight-default">Exemplo:</mark><code>T1</code></li></ol><ol type="1" id="1ecc6937-1e17-8040-92f5-db7e1e80763f" class="numbered-list" start="2"><li><strong>1ª data: </strong><mark class="highlight-default">Exemplo:</mark><code>07.06.2025</code> (vencimento)</li></ol><ol type="1" id="1ecc6937-1e17-8021-b8c3-db56d35265a6" class="numbered-list" start="3"><li><strong>Incluído: </strong><mark class="highlight-default">Exemplo: </mark><code>✅</code></li></ol><ol type="1" id="1ecc6937-1e17-8041-a77f-e50d72db7ca8" class="numbered-list" start="4"><li>Regras Calendário: <mark class="highlight-default">Exemplo:</mark><code>Dias de trabalho subsequente</code> </li></ol><ol type="1" id="1ecc6937-1e17-8010-92c5-d20d26a3a548" class="numbered-list" start="5"><li><strong>1ª data: </strong><mark class="highlight-default">Exemplo:</mark><code>07.06.2025</code> (vencimento)</li></ol><ol type="1" id="1ecc6937-1e17-80c7-85c4-d1a500986340" class="numbered-list" start="6"><li>Cálculo em dias: <mark class="highlight-default">Exemplo:</mark><code>Dias de trabalho subsequente</code></li></ol><p id="1ecc6937-1e17-8062-8f88-f1489e4f5a67" class="">
+</p><p id="1ecc6937-1e17-80e8-9e62-f512d3c08009" class="">Clicar para voltar</p><figure id="1ecc6937-1e17-802b-98ee-fd91c09efa73" class="image"><a href="image%2013.png"><img style="width:332.84722900390625px" src="image%2013.png"/></a></figure><p id="1ecc6937-1e17-809c-8009-c9916971f575" class="">
+</p></div></div></details></li></ul></details></li></ul><hr id="1ecc6937-1e17-8095-86ad-e5d712cf503e"/><ul id="1ecc6937-1e17-8036-9f3a-c6f7ee70db08" class="toggle"><li><details open=""><summary>2. <strong>Detalhes da Condição: </strong>Juros de Entrada (Ponta Passiva)</summary><div id="1ecc6937-1e17-8052-922b-daca1ac92052" class="column-list"><div id="1ecc6937-1e17-8001-8406-fff06cde0d39" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-8051-a6a2-dc4055b01c91" class="image" style="text-align:center"><a href="image%2014.png"><img style="width:447.98828125px" src="image%2014.png"/></a></figure></div><div id="1ecc6937-1e17-805c-ad7d-d3397891a204" style="width:37.49999999999999%" class="column"><p id="1ecc6937-1e17-80d9-b7b9-df8d3952f9e9" class="">
+</p><p id="1ecc6937-1e17-8081-bce8-d12eda822c21" class="">
+</p><blockquote id="1ecc6937-1e17-809a-bba2-e2d4da617bf7" class="block-color-yellow">Neste momento iremos inserir os dados do cálculo de juros</blockquote><p id="1ecc6937-1e17-809e-9d30-f4b32a889cac" class="">
+</p><p id="1ecc6937-1e17-809f-9460-f4aed0b0afc7" class="">Clicar no botão.</p><p id="1ecc6937-1e17-8091-8e11-f3cdc5ec468d" class="">
+</p></div></div><hr id="1ecc6937-1e17-8039-af14-efd6e63f360d"/><ul id="1ecc6937-1e17-801f-ad3d-d16050b15663" class="toggle"><li><details open=""><summary>Montantes</summary><div id="1ecc6937-1e17-80fa-9e27-c8040cfb5e4a" class="column-list"><div id="1ecc6937-1e17-80a6-883a-c1f158ae1e55" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-808c-a5e4-cdaa06b46085" class="image"><a href="image%2015.png"><img style="width:684.53125px" src="image%2015.png"/></a></figure></div><div id="1ecc6937-1e17-8011-bae3-e1f024d6575b" style="width:37.50000000000001%" class="column"><p id="1ecc6937-1e17-8067-b2d4-ddba9dfba606" class=""><strong>Insira os seguintes dados:</strong></p><ol type="1" id="1ecc6937-1e17-80eb-925c-fc85521a9ef5" class="numbered-list" start="1"><li>Tipo do cálculo de juros: <mark class="highlight-default">Exemplo:</mark><code>Cálculo de juros exponencial</code></li></ol><ol type="1" id="1ecc6937-1e17-80ca-b989-ea479998384d" class="numbered-list" start="2"><li>Freq. comp. juros: <mark class="highlight-default">Exemplo:</mark><code>Compensação de Juros Anual</code></li></ol><ol type="1" id="1ecc6937-1e17-8031-9aa2-d6c8594a471f" class="numbered-list" start="3"><li>Mét. cálc. juros: <mark class="highlight-default">Exemplo:</mark><code>actW/252</code></li></ol><ol type="1" id="1ecc6937-1e17-80c3-844e-cdd75485c969" class="numbered-list" start="4"><li>Calendário de Juros: <mark class="highlight-default">Exemplo:</mark><code>T1</code></li></ol><ol type="1" id="1ecc6937-1e17-802b-8713-cdb5b5cf7043" class="numbered-list" start="5"><li>Taxa juros ref.:<mark class="highlight-default"> Exemplo:</mark><code>CDI</code></li></ol><p id="1ecc6937-1e17-8057-8a21-dbaa6fa0541e" class="">
+</p><p id="1ecc6937-1e17-80a4-af6b-cf6844575eff" class="">Clicar na aba <mark class="highlight-teal"><code>DATAS</code></mark><mark class="highlight-default">.</mark></p><p id="1ecc6937-1e17-80fa-8cc1-e0cea27c549e" class="">
+</p></div></div></details></li></ul><hr id="1ecc6937-1e17-8068-9a47-f0a1c57fc49a"/><ul id="1ecc6937-1e17-80c8-83cb-c6fd326254d0" class="toggle"><li><details open=""><summary>Datas</summary><div id="1ecc6937-1e17-80ca-9ad5-c96d65789ebd" class="column-list"><div id="1ecc6937-1e17-80e4-9b03-ff6c89df66d1" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-8068-ac2c-f5f6222e2cc0" class="image"><a href="image%2012.png"><img style="width:684.53125px" src="image%2012.png"/></a></figure></div><div id="1ecc6937-1e17-80de-b985-ea0317d03dc8" style="width:37.50000000000001%" class="column"><p id="1ecc6937-1e17-80d7-b802-d74259f9f364" class=""><strong>Procedimento:  </strong></p><ol type="1" id="1ecc6937-1e17-80b5-a105-c5cce1db570d" class="numbered-list" start="1"><li>Calendário: <mark class="highlight-default">Exemplo:</mark><code>T1</code></li></ol><ol type="1" id="1ecc6937-1e17-80dc-95fe-cbbb4578dbe2" class="numbered-list" start="2"><li><strong>1ª data: </strong><mark class="highlight-default">Exemplo:</mark><code>07.06.2025</code> (vencimento)</li></ol><ol type="1" id="1ecc6937-1e17-806b-9873-c8cb810c71b5" class="numbered-list" start="3"><li><strong>Incluído: </strong><mark class="highlight-default">Exemplo: </mark><code>✅</code></li></ol><ol type="1" id="1ecc6937-1e17-8083-9982-c37ca1469ddc" class="numbered-list" start="4"><li>Regras Calendário: <mark class="highlight-default">Exemplo:</mark><code>Dias de trabalho subsequente</code> </li></ol><ol type="1" id="1ecc6937-1e17-809c-afda-c622bf4a6d50" class="numbered-list" start="5"><li><strong>1ª data: </strong><mark class="highlight-default">Exemplo:</mark><code>07.06.2025</code> (vencimento)</li></ol><ol type="1" id="1ecc6937-1e17-806c-b09f-ef7d2c74cb9a" class="numbered-list" start="6"><li>Cálculo em dias: <mark class="highlight-default">Exemplo:</mark><code>Dias de trabalho subsequente</code></li></ol><p id="1ecc6937-1e17-8076-bdd9-f691fd222ca2" class="">
+</p><p id="1ecc6937-1e17-8033-9c4c-cf57077bb6f8" class="">Clicar para voltar</p><figure id="1ecc6937-1e17-80fe-b4d6-ecd16f396957" class="image"><a href="image%2013.png"><img style="width:332.84722900390625px" src="image%2013.png"/></a></figure><p id="1ecc6937-1e17-8085-84fc-ef8201edf02c" class="">
+</p></div></div></details></li></ul></details></li></ul><hr id="1ecc6937-1e17-801c-b62f-d26f434ac157"/><h3 id="1ecc6937-1e17-80ac-9069-ce9a5172974c" class="block-color-teal"><mark class="highlight-blue">2.2. Correção de Juros</mark></h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1ecc6937-1e17-805f-9328-ce4578ff4f3c"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/info-alternate_yellow.svg"/></div><div style="width:100%"><p id="1ecc6937-1e17-80e0-a2f3-f3c36bdfbf1d" class="">Correção de Juros, responde a pergunta quando eu vou remunerar a contrato financeiro e com qual taxa. </p></div></figure><ul id="1ecc6937-1e17-8050-870e-ead050fd2baf" class="toggle"><li><details open=""><summary><strong>1. Detalhes das Condições: Correção de Juros</strong></summary><div id="1ecc6937-1e17-80e5-8fe6-cf396013a512" class="column-list"><div id="1ecc6937-1e17-80eb-ae50-cfb4d96ec4df" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-8011-964e-de518a8734e2" class="image" style="text-align:center"><a href="image%2016.png"><img style="width:425.99609375px" src="image%2016.png"/></a></figure></div><div id="1ecc6937-1e17-807d-b6cb-c174d0052c8f" style="width:37.5%" class="column"><p id="1ecc6937-1e17-804d-9f7e-da2cbd26b48c" class="">
+</p><p id="1ecc6937-1e17-80bc-a397-fda51300986f" class="">
+</p><p id="1ecc6937-1e17-8010-b53b-dc4fafa8af1f" class="">
+</p><blockquote id="1ecc6937-1e17-80b9-8134-f9a2146f763e" class="block-color-yellow">Neste momento iremos inserir os dados da correção de juros</blockquote><p id="1ecc6937-1e17-8047-b919-f8cac01eb290" class="">
+</p><p id="1ecc6937-1e17-8053-a40b-c30e090def1c" class="">Clicar no botão.</p></div></div><hr id="1ecc6937-1e17-8044-8f63-e5651c0b4928"/><div id="1ecc6937-1e17-80ae-b526-e4566604dbf2" class="column-list"><div id="1ecc6937-1e17-8099-ac92-fc321edb417d" style="width:56.25%" class="column"><figure id="1ecc6937-1e17-80b2-ad5a-c398e1168027" class="image"><a href="image%2017.png"><img style="width:631.81640625px" src="image%2017.png"/></a></figure></div><div id="1ecc6937-1e17-800f-be08-c985589cef23" style="width:43.75%" class="column"><p id="1ecc6937-1e17-80ee-9387-d62884b53e7e" class=""><strong>Correção de Juros</strong></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1ecc6937-1e17-8040-9029-ccede712e395"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/info-alternate_yellow.svg"/></div><div style="width:100%">Correção de Juros é quando, você irá corrigir o contrato, nesse caso é no dia de trabalho subsequente ao dia do investimento. </div></figure><ol type="1" id="1ecc6937-1e17-80ea-a2cc-d1864e433d8d" class="numbered-list" start="1"><li>Correção de juros: Informe <code>Periódico</code> </li></ol><ol type="1" id="1ecc6937-1e17-8043-89ad-e07d4c171bf5" class="numbered-list" start="2"><li>Período de correção <code>1</code> <code>Dias de calendário</code></li></ol><ol type="1" id="1ecc6937-1e17-8043-b003-ec6392de28b3" class="numbered-list" start="3"><li>Data de correção de juros: <mark class="highlight-default">Exemplo:</mark><mark class="highlight-red"><code>18.11.2024</code></mark><mark class="highlight-red"> </mark>Mesma data do início do contrato.</li></ol><ol type="1" id="1ecc6937-1e17-80d7-9b4d-d3e6a7943899" class="numbered-list" start="4"><li>Regras do calendário: Informe <code>Dia de trabalho subsequente</code></li></ol><ol type="1" id="1ecc6937-1e17-8008-9103-c03ff0243b81" class="numbered-list" start="5"><li>No campo números de dias coloque <code>+1</code> Dias de calendário</li></ol><ol type="1" id="1ecc6937-1e17-8025-86ed-e4b70f2ca3e9" class="numbered-list" start="6"><li>Calendário: Informe o calendário da empresa: <code>T1</code></li></ol></div></div><hr id="1ecc6937-1e17-806f-a1df-ee4a355601c2"/><div id="1ecc6937-1e17-8018-a26a-cda2f93ccf18" class="column-list"><div id="1ecc6937-1e17-800e-891f-c447633c330c" style="width:56.25%" class="column"><figure id="1ecc6937-1e17-80b7-8a5d-f2a70f643288" class="image"><a href="image%2018.png"><img style="width:631.81640625px" src="image%2018.png"/></a></figure></div><div id="1ecc6937-1e17-80f5-8f77-dc2cee83f873" style="width:43.75%" class="column"><p id="1ecc6937-1e17-80f8-abe7-d000d3db18b4" class=""><strong>Fixação de Juros</strong></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1ecc6937-1e17-80c7-beab-c1fdce6cce83"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/info-alternate_yellow.svg"/></div><div style="width:100%">Fixação de Juros responde a pergunta com a taxa de qual dia .</div></figure><ol type="1" id="1ecc6937-1e17-80d7-9ca0-c44c0dcb8a02" class="numbered-list" start="7"><li>Fixação de juros: Informe <code>Relativo</code></li></ol><ol type="1" id="1ecc6937-1e17-806a-a192-d94f424d5d9a" class="numbered-list" start="8"><li>Data de correção de juros: Informe <code>-1</code> Dias de calendário</li></ol><p id="1ecc6937-1e17-805d-9e40-ebb038bb8651" class="">
+</p><p id="1ecc6937-1e17-8055-8140-dc1440b028ea" class="">Clicar para voltar</p><figure id="1ecc6937-1e17-8043-9ab9-ed6c79537c85" class="image"><a href="image%2013.png"><img style="width:332.84722900390625px" src="image%2013.png"/></a></figure><p id="1ecc6937-1e17-8003-9f9f-cc89a48cbaaa" class="">
+</p></div></div></details></li></ul><hr id="1ecc6937-1e17-8078-b20c-cae131179aef"/><h2 id="1ecc6937-1e17-802b-8e8f-d4c2a2b277a6" class=""><mark class="highlight-blue">3. Aba de Administração</mark></h2><ul id="1ecc6937-1e17-80de-8c8f-f9d83d12b800" class="toggle"><li><details open=""><summary>Informações adicionais</summary><div id="1ecc6937-1e17-804b-9ea1-ca966b9ae747" class="column-list"><div id="1ecc6937-1e17-80ea-9822-d7def15e0470" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-8064-8162-e380a3e4cc6e" class="image"><a href="image%2019.png"><img style="width:648.96484375px" src="image%2019.png"/></a></figure></div><div id="1ecc6937-1e17-80ce-acca-ff7ee70c5282" style="width:37.5%" class="column"><p id="1ecc6937-1e17-8097-913f-d2e140efea0d" class="">Procedimento:</p><p id="1ecc6937-1e17-80eb-b784-e810fc0effab" class="">
+</p><ol type="1" id="1ecc6937-1e17-80cb-b76f-e26b75a0315e" class="numbered-list" start="1"><li>Portfólio: <mark class="highlight-default">Exemplo:</mark><code>OTC_SWAP</code></li></ol><ol type="1" id="1ecc6937-1e17-80c3-96b9-d7568e4cecef" class="numbered-list" start="2"><li>Classe de avaliação geral: <mark class="highlight-default">Exemplo:</mark><code>Derivativos Swap</code></li></ol><p id="1ecc6937-1e17-801b-8332-f1354ca9f742" class="">
+</p></div></div></details></li></ul><hr id="1ecc6937-1e17-8020-92bd-e199ac7391d6"/><h2 id="1ecc6937-1e17-8017-8ed0-ead130f10bdd" class=""><mark class="highlight-blue">4. Detalhes de Pagamento</mark></h2><ul id="1ecc6937-1e17-80b5-bf34-e8eb48b2be12" class="toggle"><li><details open=""><summary>Informações bancárias</summary><div id="1ecc6937-1e17-805d-b81c-c5644432c732" class="column-list"><div id="1ecc6937-1e17-807f-ae35-f93c8c735ee6" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-80c4-b92c-e69c788b1272" class="image"><a href="image%2020.png"><img style="width:702.01171875px" src="image%2020.png"/></a></figure></div><div id="1ecc6937-1e17-8093-9969-fa1876ccf308" style="width:37.50000000000001%" class="column"><p id="1ecc6937-1e17-808e-88b8-f55ae04c14f3" class=""><strong>Procedimento:</strong></p><ol type="1" id="1ecc6937-1e17-804a-bb00-c5cf352fe917" class="numbered-list" start="1"><li>Preencher as direções e moeda:</li></ol><p id="1ecc6937-1e17-8064-a55a-e02b56a8b8aa" class="">Direção: <code>+ Entrada</code>       Moeda da transação: <code>BRL</code></p><p id="1ecc6937-1e17-80c7-829b-d182b25566f4" class="">Direção: <code>- Retirada</code>     Moeda da transação: <code>BRL</code></p><ol type="1" id="1ecc6937-1e17-806f-9d00-d5da4c485153" class="numbered-list" start="2"><li>Duplo clique no campo <code>Bco. empr.</code> </li></ol><p id="1ecc6937-1e17-8064-b244-df364e9997a0" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1ecc6937-1e17-8011-b24f-cbff4e7e9f97"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/info-alternate_yellow.svg"/></div><div style="width:100%"><p id="1ecc6937-1e17-80da-93a7-fd11c2386624" class="">Caso esteja cadastrado no Parceiro de Negócio, essas informações serão preenchidas automaticamente.</p></div></figure><p id="1ecc6937-1e17-80d2-8bda-e503b64c056b" class="">
+</p></div></div><hr id="1ecc6937-1e17-808a-9b22-e5ce3a258ec6"/><div id="1ecc6937-1e17-805e-afa8-fcb96eeb8365" class="column-list"><div id="1ecc6937-1e17-8015-9aa1-cd56b27fc66f" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-8008-9cf2-eed48f33c2b5" class="image"><a href="image%2021.png"><img style="width:702.01171875px" src="image%2021.png"/></a></figure></div><div id="1ecc6937-1e17-80cd-a5b9-e365ec04bc30" style="width:37.49999999999999%" class="column"><p id="1ecc6937-1e17-80c8-bb06-fb3d5e535a3a" class=""><strong>Procedimento:</strong></p><ol type="1" id="1ecc6937-1e17-8048-90af-e6878f9f4f08" class="numbered-list" start="3"><li>Banco empresa: Selecione o banco que será realizado o recebimento em conta. <mark class="highlight-default">Exemplo:</mark><code>74501</code></li></ol><ol type="1" id="1ecc6937-1e17-8059-b815-c44a5b3bff86" class="numbered-list" start="4"><li>ID conta: Selecione a conta do banco que será realizado o recebimento em conta. <mark class="highlight-default">Exemplo:</mark><code>74501</code></li></ol><ol type="1" id="1ecc6937-1e17-800d-a39b-c584df1f88dc" class="numbered-list" start="5"><li>Clique na seta <code>&gt;</code> para ir para a próxima entrada, que no caso é fluxo de retirada em BRL. </li></ol><p id="1ecc6937-1e17-8080-84e1-f2667aefdc6f" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1ecc6937-1e17-8019-b75c-e5f3a2eb2477"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/info-alternate_yellow.svg"/></div><div style="width:100%"><p id="1ecc6937-1e17-80ca-87bc-c0e37cb220e1" class="">A atribuição do ID conta, preenche automaticamente o campo Banco empresa.</p></div></figure><p id="1ecc6937-1e17-8034-89a7-c5e3db1ead66" class="">
+</p></div></div><hr id="1ecc6937-1e17-80df-bfbe-fa63590ec210"/><div id="1ecc6937-1e17-805e-99c3-c0e0b752c52c" class="column-list"><div id="1ecc6937-1e17-80bc-9290-c23fb7604d5f" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-80a0-8d50-d9d4a5eec0fe" class="image"><a href="image%2022.png"><img style="width:702.01171875px" src="image%2022.png"/></a></figure></div><div id="1ecc6937-1e17-80cf-924a-c77153f6ca9a" style="width:37.49999999999999%" class="column"><ol type="1" id="1ecc6937-1e17-80f9-9162-e62ef03fdf3a" class="numbered-list" start="6"><li>Banco empresa: Selecione o banco que será realizado o débito em conta. </li></ol><ol type="1" id="1ecc6937-1e17-805c-8539-fa0d908022ff" class="numbered-list" start="7"><li>ID conta: Selecione a conta do banco que será realizado o débito em conta</li></ol><ol type="1" id="1ecc6937-1e17-80b2-8d5f-eb44cacbf59c" class="numbered-list" start="8"><li>Clique na <code>imagem</code> para ir para salvar os detalhes de pagamento</li></ol><p id="1ecc6937-1e17-8082-a565-fe0b86ef297a" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1ecc6937-1e17-8017-a734-ff2fc3a166ee"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/info-alternate_yellow.svg"/></div><div style="width:100%"><p id="1ecc6937-1e17-8030-a316-e066ca65d332" class="">A atribuição do ID conta, preenche automaticamente o campo Banco empresa.</p></div></figure><p id="1ecc6937-1e17-80d6-9d6e-ce61c09627a5" class="">
+</p></div></div></details></li></ul><hr id="1ecc6937-1e17-80ff-99d5-d75f1f90b30e"/><h2 id="1ecc6937-1e17-8069-81a2-e27d96191df5" class=""><mark class="highlight-blue">5. Fluxo de caixa</mark></h2><ul id="1ecc6937-1e17-80a7-869a-e862cf2e0fda" class="toggle"><li><details open=""><summary>Detalhes de lançamentos no fluxo de caixa</summary><div id="1ecc6937-1e17-80f5-bdf0-f1cd31586b17" class="column-list"><div id="1ecc6937-1e17-80f7-a39c-eabb54a6b7f7" style="width:62.5%" class="column"><figure id="1ecc6937-1e17-80fc-bed1-c032a85f7fee" class="image"><a href="image%2023.png"><img style="width:702.01171875px" src="image%2023.png"/></a></figure></div><div id="1ecc6937-1e17-80b5-b727-c8015aa5d7f9" style="width:37.50000000000001%" class="column"><p id="1ecc6937-1e17-8095-91ec-d45210e2936b" class=""><strong>Procedimento:</strong></p><ol type="1" id="1ecc6937-1e17-80ec-b7bb-d79ea5bed1b8" class="numbered-list" start="1"><li>Verificar o fluxo de caixa de acordo com os lançamentos efetuados.</li></ol><ol type="1" id="1ecc6937-1e17-8059-b796-f60de1748997" class="numbered-list" start="2"><li>Clicar em <code>Gravar</code> para efetuar o lançamento do contrato.<br/><br/></li></ol><figure id="1ecc6937-1e17-80af-8248-f75e6b2a3d62" class="image" style="text-align:center"><a href="image%2024.png"><img style="width:306.9921875px" src="image%2024.png"/></a></figure><p id="1ecc6937-1e17-80e3-a270-ddfd8dccf6e4" class="">
+</p></div></div></details></li></ul><hr id="1ecc6937-1e17-80f3-9744-d6546fcddde1"/><div id="1ecc6937-1e17-80dc-82f7-c9254997b656" class="column-list"><div id="1ecc6937-1e17-80a4-9927-ec95d113e7fe" style="width:50.000000000000014%" class="column"><h2 id="1ecc6937-1e17-807b-b9f6-feea7e6f774c" class=""><mark class="highlight-blue">Estornar/Cancelar </mark></h2><p id="1ecc6937-1e17-805a-ac4f-e12dce025d26" class="">
+</p><p id="1ecc6937-1e17-806b-b8b0-e2a2744c4066" class="">
+</p></div><div id="1ecc6937-1e17-8089-b83d-f2027a85c6bb" style="width:50%" class="column"><h2 id="1ecc6937-1e17-80ee-a557-f08b1b5d9409" class=""><mark class="highlight-blue">Próximo Passo</mark></h2><figure id="1e2c6937-1e17-8015-882c-de6fa7742c80" class="link-to-page"><a href="Transac%CC%A7a%CC%83o%20TO04%20Definir%20status%20de%20liquidac%CC%A7a%CC%83o%201e2c69371e178015882cde6fa7742c80.html"><img class="icon" src="https://www.notion.so/icons/iterate_blue.svg"/>Transação TO04 | Definir status de liquidação</a></figure><p id="1ecc6937-1e17-80d4-804d-c9ea006e83fa" class="">
+</p></div></div><p id="1ecc6937-1e17-8068-ae2f-f37089e2a4db" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,696 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Transação TO04 | Definir status de liquidação</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1e2c6937-1e17-8015-882c-de6fa7742c80" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/iterate_blue.svg"/></div><h1 class="page-title">Transação TO04 | Definir status de liquidação</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-person"><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(71, 70, 68, 0.6);flex-shrink:0" class="typesPerson"><path d="M10.9536 7.90088C12.217 7.90088 13.2559 6.79468 13.2559 5.38525C13.2559 4.01514 12.2114 2.92017 10.9536 2.92017C9.70142 2.92017 8.65137 4.02637 8.65698 5.39087C8.6626 6.79468 9.69019 7.90088 10.9536 7.90088ZM4.4231 8.03003C5.52368 8.03003 6.42212 7.05859 6.42212 5.83447C6.42212 4.63843 5.51245 3.68945 4.4231 3.68945C3.33374 3.68945 2.41846 4.64966 2.41846 5.84009C2.42407 7.05859 3.32251 8.03003 4.4231 8.03003ZM1.37964 13.168H5.49561C4.87231 12.292 5.43384 10.6074 6.78711 9.51807C6.18628 9.14746 5.37769 8.87231 4.4231 8.87231C1.95239 8.87231 0.262207 10.6917 0.262207 12.1628C0.262207 12.7974 0.548584 13.168 1.37964 13.168ZM7.50024 13.168H14.407C15.4009 13.168 15.7322 12.8423 15.7322 12.2864C15.7322 10.8489 13.8679 8.88354 10.9536 8.88354C8.04492 8.88354 6.17505 10.8489 6.17505 12.2864C6.17505 12.8423 6.50635 13.168 7.50024 13.168Z"></path></svg></span>Owner</th><td><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">J</span></span>Julian Cidade</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(71, 70, 68, 0.6);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(71, 70, 68, 0.6);flex-shrink:0" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Created time</th><td><time>@27 de abril de 2025 06:36</time></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(71, 70, 68, 0.6);flex-shrink:0" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Last edited time 1</th><td><time>@19 de maio de 2025 01:02</time></td></tr><tr class="property-row property-row-status"><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(71, 70, 68, 0.6);flex-shrink:0" class="typesStatus"><path d="M8.75488 1.02344C8.75488 0.613281 8.41309 0.264648 8.00293 0.264648C7.59277 0.264648 7.25098 0.613281 7.25098 1.02344V3.11523C7.25098 3.51855 7.59277 3.86719 8.00293 3.86719C8.41309 3.86719 8.75488 3.51855 8.75488 3.11523V1.02344ZM3.91504 5.0293C4.20215 5.31641 4.69434 5.32324 4.97461 5.03613C5.26855 4.74902 5.26855 4.25684 4.98145 3.96973L3.53906 2.52051C3.25195 2.2334 2.7666 2.21973 2.47949 2.50684C2.19238 2.79395 2.18555 3.28613 2.47266 3.57324L3.91504 5.0293ZM10.9629 4.01758C10.6826 4.30469 10.6826 4.79688 10.9697 5.08398C11.2568 5.37109 11.749 5.36426 12.0361 5.07715L13.4854 3.62793C13.7725 3.34082 13.7725 2.84863 13.4785 2.55469C13.1982 2.27441 12.7061 2.27441 12.4189 2.56152L10.9629 4.01758ZM15.0234 8.78906C15.4336 8.78906 15.7822 8.44727 15.7822 8.03711C15.7822 7.62695 15.4336 7.28516 15.0234 7.28516H12.9385C12.5283 7.28516 12.1797 7.62695 12.1797 8.03711C12.1797 8.44727 12.5283 8.78906 12.9385 8.78906H15.0234ZM0.975586 7.28516C0.56543 7.28516 0.223633 7.62695 0.223633 8.03711C0.223633 8.44727 0.56543 8.78906 0.975586 8.78906H3.07422C3.48438 8.78906 3.83301 8.44727 3.83301 8.03711C3.83301 7.62695 3.48438 7.28516 3.07422 7.28516H0.975586ZM12.0361 10.9902C11.749 10.71 11.2568 10.71 10.9629 10.9971C10.6826 11.2842 10.6826 11.7764 10.9697 12.0635L12.4258 13.5127C12.7129 13.7998 13.2051 13.793 13.4922 13.5059C13.7793 13.2256 13.7725 12.7266 13.4854 12.4395L12.0361 10.9902ZM2.52051 12.4395C2.22656 12.7266 2.22656 13.2188 2.50684 13.5059C2.79395 13.793 3.28613 13.7998 3.57324 13.5127L5.02246 12.0703C5.31641 11.7832 5.31641 11.291 5.03613 11.0039C4.74902 10.7168 4.25684 10.71 3.96973 10.9971L2.52051 12.4395ZM8.75488 12.9658C8.75488 12.5557 8.41309 12.207 8.00293 12.207C7.59277 12.207 7.25098 12.5557 7.25098 12.9658V15.0576C7.25098 15.4609 7.59277 15.8096 8.00293 15.8096C8.41309 15.8096 8.75488 15.4609 8.75488 15.0576V12.9658Z"></path></svg></span>Status</th><td><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>5. Em revisão Diego</span></td></tr></tbody></table></header><div class="page-body"><h3 id="1e6c6937-1e17-806b-b47b-facf6fbca827" class="block-color-teal"><mark class="highlight-blue">Objetivo:</mark></h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1e6c6937-1e17-80f1-b77d-f32a193a979d"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/bullseye_blue.svg"/></div><div style="width:100%">Marcar manualmente o status de liquidação de um contrato para controle interno.</div></figure><p id="1e6c6937-1e17-802d-9b82-c927c0a96be3" class="">
+</p><div id="1e6c6937-1e17-80f9-bd14-e09108c5e484" class="column-list"><div id="1e6c6937-1e17-800d-b395-caa499fedca6" style="width:68.75%" class="column"><h3 id="1e6c6937-1e17-8085-a9b0-dfbe5256530d" class="block-color-teal"><mark class="highlight-blue">Pré-Requisitos</mark></h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1e6c6937-1e17-8098-8f82-efc4b629d62d"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/info-alternate_yellow.svg"/></div><div style="width:100%">Uma transação TRM foi corretamente criada na etapa anterior. </div></figure></div><div id="1e6c6937-1e17-8078-bf46-dc9ded4b50c7" style="width:31.25%" class="column"><p id="1ecc6937-1e17-8082-9bca-e50d4bdd4f26" class="">
+</p><h3 id="1ecc6937-1e17-80e2-8253-d9e401bbefed" class=""><mark class="highlight-blue"><strong>JIRA</strong></mark></h3><p id="1ecc6937-1e17-8051-9fab-fd1abaa70a85" class=""><a href="https://dexterityit.atlassian.net/browse/BPRACT-178">https://dexterityit.atlassian.net/browse/BPRACT-178</a></p><p id="1ecc6937-1e17-8071-9910-e7c7046e7356" class="">
+</p><h3 id="1e6c6937-1e17-80d7-89f4-c0789b517c19" class="block-color-pink"><mark class="highlight-blue">Vídeo</mark></h3><p id="1e6c6937-1e17-802d-848a-d8a3dd2b3a3d" class="">
+</p></div></div><h3 id="1e6c6937-1e17-8075-8e6e-d67ba6f0e37e" class=""><mark class="highlight-blue">Dados desse Exemplo</mark></h3><p id="1e6c6937-1e17-8075-aea4-d8b62d2df0fa" class=""><strong>Transação:</strong> <code>4000000000042</code> </p><hr id="1e6c6937-1e17-80f5-9ab1-e46db6ddb8a6"/><h1 id="1e6c6937-1e17-806f-926d-cb90f2392265" class=""><mark class="highlight-blue">Instruções passo a passo</mark></h1><h2 id="1e6c6937-1e17-809d-a106-ce2941fdf0dc" class=""><mark class="highlight-blue">Liquidação Individual (TO04)</mark></h2><hr id="1e6c6937-1e17-80e4-b985-ea9f928d0cd5"/><ul id="1e6c6937-1e17-80fd-b2d6-f11bf3e05107" class="toggle"><li><details open=""><summary>1. Inserir critérios de seleção e liquidar a transação TRM</summary><div id="1e6c6937-1e17-80ae-85ba-e1b492245d1f" class="column-list"><div id="1e6c6937-1e17-80ca-b020-c47b92b312d8" style="width:56.25%" class="column"><figure id="1ebc6937-1e17-800f-a6aa-d8409e9a21ab" class="image"><a href="image%2072.png"><img style="width:631.8359375px" src="image%2072.png"/></a></figure></div><div id="1e6c6937-1e17-8016-8ce8-eb722844d8ad" style="width:43.74999999999999%" class="column"><p id="1e6c6937-1e17-80ef-86e8-c43f70da9306" class=""><strong>Insira os seguintes dados:</strong></p><p id="1e6c6937-1e17-8089-9037-cf9ec39df64d" class="">
+</p><ol type="1" id="1e6c6937-1e17-8067-850b-cd00d804ef7b" class="numbered-list" start="1"><li>Preencher o campo Empresa. <mark class="highlight-default">Exemplo:</mark><mark class="highlight-red"><code>1000</code></mark></li></ol><ol type="1" id="1e6c6937-1e17-80d8-93b1-c18891b22ff1" class="numbered-list" start="2"><li>Preencher o Nº da <mark class="highlight-default">Transação</mark>. <mark class="highlight-default">Exemplo:</mark><mark class="highlight-red"><code>4000000000042</code></mark></li></ol><p id="1e6c6937-1e17-8003-8435-fadbf1b96c9f" class="">Clique no botão <mark class="highlight-teal"><code>ENTRAR</code></mark>.</p><p id="1e6c6937-1e17-80e2-91f2-f78390241aa9" class="">
+</p></div></div></details></li></ul><hr id="1e6c6937-1e17-801a-8fad-cd598f53c0d2"/><ul id="1e6c6937-1e17-80fd-ba12-edc0c37fc0a7" class="toggle"><li><details open=""><summary><strong>2. Salvar a modificação</strong></summary><div id="1e6c6937-1e17-804b-ab77-f04304b8a8f4" class="column-list"><div id="1e6c6937-1e17-80a3-9735-ead9e679269d" style="width:56.25%" class="column"><figure id="1ebc6937-1e17-8028-8232-dbb6a5dbfe3b" class="image"><a href="image%2073.png"><img style="width:631.81640625px" src="image%2073.png"/></a></figure></div><div id="1e6c6937-1e17-804d-91a4-efc8f68c7b08" style="width:43.75%" class="column"><p id="1e6c6937-1e17-806a-9855-c561e642037d" class=""><strong>Procedimento:</strong></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1e6c6937-1e17-80c7-a658-eae661f9a889"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/asterisk_yellow.svg"/></div><div style="width:100%"><p id="1e6c6937-1e17-80f2-a16e-ed6b1e41ad0c" class="">Verificar as informações do contrato e se a Operação está como <mark class="highlight-yellow"><code>Liquidação contratual</code></mark></p></div></figure><p id="1e6c6937-1e17-80f9-9813-f8c22ae27602" class="">Clicar em <mark class="highlight-teal"><code>GRAVAR</code></mark><mark class="highlight-default">.</mark></p><p id="1e6c6937-1e17-8017-9db2-eb59f453a0a0" class="">
+</p><p id="1e6c6937-1e17-80a4-a64c-da65a49218cd" class="">A transação é liquidada e gravada.</p><figure id="1e6c6937-1e17-80dc-ae78-dee38d91d29e" class="image"><a href="image%2074.png"><img style="width:355.7465515136719px" src="image%2074.png"/></a></figure></div></div></details></li></ul><h2 id="1e6c6937-1e17-809b-b5e6-cfe96e1f6fae" class=""><mark class="highlight-blue">Liquidação Individual (FTR_EDIT)</mark></h2><ul id="1e6c6937-1e17-80be-a066-c6543d810985" class="toggle"><li><details open=""><summary>1. Acessar o app SAP Fiori</summary><div id="1e6c6937-1e17-808a-8947-f398a26f52c4" class="column-list"><div id="1e6c6937-1e17-8009-ad4f-f5f7ee29bb10" style="width:56.25%" class="column"><figure id="1e6c6937-1e17-8015-b5a9-e952d04d8455" class="image" style="text-align:center"><a href="e3184376-7f3a-4a1a-b6b9-3bf01f23e02f.png"><img style="width:317.9220779220779px" src="e3184376-7f3a-4a1a-b6b9-3bf01f23e02f.png"/></a></figure></div><div id="1e6c6937-1e17-8081-a01b-ec1c138f5b5c" style="width:43.75%" class="column"><p id="1e6c6937-1e17-803b-a51e-e4dbb9f1d43d" class=""><strong>Procedimento:</strong></p><p id="1e6c6937-1e17-805c-9d51-ced33a666b28" class="">
+</p><p id="1e6c6937-1e17-8055-a1ad-c019cb3bf162" class="">Abra  o App Processar transação financeira (<code>FTR_EDIT</code>).</p><p id="1e6c6937-1e17-8073-ada2-def5a8f2c420" class="">
+</p></div></div></details></li></ul><hr id="1e6c6937-1e17-80af-b889-ea79c7c28068"/><ul id="1e6c6937-1e17-80a1-9698-cd395c0c82ed" class="toggle"><li><details open=""><summary>2. Inserir critérios de seleção e liquidar a transação TRM</summary><div id="1e6c6937-1e17-8054-afac-f3633fd85c29" class="column-list"><div id="1e6c6937-1e17-8098-b39b-c13e56fc9274" style="width:56.25%" class="column"><figure id="1ebc6937-1e17-8077-9d31-dc29b5ffc730" class="image"><a href="image%2075.png"><img style="width:631.81640625px" src="image%2075.png"/></a></figure></div><div id="1e6c6937-1e17-80ab-9434-c068acc1e530" style="width:43.74999999999999%" class="column"><p id="1e6c6937-1e17-8019-84b1-d0831db5265c" class=""><strong>Insira os seguintes dados:</strong></p><p id="1e6c6937-1e17-8010-910b-e23fe3c0af47" class="">
+</p><ol type="1" id="1e6c6937-1e17-802a-aab1-f0d3d2603618" class="numbered-list" start="1"><li>Preencher o campo Empresa. <mark class="highlight-default">Exemplo:</mark><mark class="highlight-red"><code>1000</code></mark></li></ol><ol type="1" id="1e6c6937-1e17-8031-8395-c8c2e29a178d" class="numbered-list" start="2"><li>Preencher o Nº da <mark class="highlight-default">Transação</mark>. <mark class="highlight-default">Exemplo:</mark><mark class="highlight-red"><code>4000000000042</code></mark></li></ol><ol type="1" id="1e6c6937-1e17-807d-920f-db56810f68d4" class="numbered-list" start="3"><li>Informar o Grp.instrums.financs.: <code>11 Derivativos de taxa de juros MB</code></li></ol><ol type="1" id="1e6c6937-1e17-80e1-ae80-d40505765f67" class="numbered-list" start="4"><li>Clique no botão <mark class="highlight-teal"><code>Liquidar</code></mark>.</li></ol><p id="1e6c6937-1e17-80dc-9807-ffd66bb97935" class="">
+</p></div></div></details></li></ul><hr id="1e6c6937-1e17-8036-a39e-e1a8d07d61fc"/><ul id="1e6c6937-1e17-802b-bdb8-c30520fe9ed9" class="toggle"><li><details open=""><summary>4<strong>. Salvar a modificação</strong></summary><div id="1e6c6937-1e17-80ea-a73e-eec103e2a20f" class="column-list"><div id="1e6c6937-1e17-8058-897a-fc0c3c9a6ab2" style="width:56.25%" class="column"><figure id="1ebc6937-1e17-8034-9ef4-fb46e1ed704b" class="image"><a href="image%2073.png"><img style="width:631.81640625px" src="image%2073.png"/></a></figure></div><div id="1e6c6937-1e17-803c-a845-f0c3bfae892f" style="width:43.75%" class="column"><p id="1e6c6937-1e17-8027-b728-ede6b28c8aa6" class=""><strong>Procedimento:</strong></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1e6c6937-1e17-800e-8c9a-fd418239f469"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/asterisk_yellow.svg"/></div><div style="width:100%"><p id="1e6c6937-1e17-808e-9536-c23cf479a03f" class="">Verificar as informações do contrato e se a Operação está como <mark class="highlight-yellow"><code>Liquidação contratual</code></mark></p></div></figure><p id="1e6c6937-1e17-800d-8497-dd213ef87894" class="">Clicar em <mark class="highlight-teal"><code>GRAVAR</code></mark><mark class="highlight-default">.</mark></p><p id="1e6c6937-1e17-80ff-a967-c22207b8008f" class="">
+</p><p id="1e6c6937-1e17-800d-bf3e-f698781df9cf" class="">A transação é liquidada e gravada.</p><figure id="1e6c6937-1e17-80ed-a50b-e5c76ebc47aa" class="image"><a href="image%2074.png"><img style="width:355.7465515136719px" src="image%2074.png"/></a></figure></div></div></details></li></ul><hr id="1e2c6937-1e17-8155-bff9-ca342e979717"/><div id="1e2c6937-1e17-814d-bb6d-c6cc794891e3" class="column-list"><div id="1e2c6937-1e17-81fe-aafa-f2d891220600" style="width:50.000000000000014%" class="column"><h2 id="1e2c6937-1e17-815c-a06e-f8f04f975893" class=""><mark class="highlight-blue">Estornar/Cancelar </mark></h2></div><div id="1e6c6937-1e17-800a-8e58-c23d50f23bea" style="width:50%" class="column"><h2 id="1e2c6937-1e17-8135-b2bf-cf0b8b7e4dd1" class=""><mark class="highlight-blue">Próximo Passo</mark></h2><figure id="1e2c6937-1e17-80ce-9d9d-ede2c424b063" class="link-to-page"><a href="TI10%20Fixar%20taxa%20de%20Cambio%201e2c69371e1780ce9d9dede2c424b063.html"><img class="icon" src="https://www.notion.so/icons/iterate_blue.svg"/>TI10 | Fixar taxa de Cambio</a></figure></div></div><p id="1e6c6937-1e17-808f-a621-d69ff7813591" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
