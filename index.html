@@ -38,8 +38,8 @@
             display: none;
         }
         .dark_light_mode_selector {
-            width: 50px;
-            height: 27px;
+            width: 40px;
+            height: 19px;
             border-radius: 24px;
             position: relative;
             flex-shrink: 0;
@@ -50,10 +50,10 @@
         .dark_light_mode_selector::before {
             content: "";
             position: absolute;
-            top: 2px;
-            left: 1px;
-            width: 20px;
-            height: 20px;
+            top: 1px;
+            left: 2px;
+            width: 15px;
+            height: 15px;
             background-color: white;
             border-radius: 50%;
             transition: transform 0.3s;
@@ -61,7 +61,7 @@
 
         /* Knob moves 26px to the right when checked */
         .dark_light_mode_input:checked ~ .dark_light_mode_selector::before {
-            transform: translateX(25px);
+            transform: translateX(20px);
         }
 
         /* Background color changes on toggle */
@@ -72,8 +72,8 @@
         /* Icons size and spacing */
         .light_mode img,
         .dark_mode img {
-            width: 25px;
-            height: 25px;
+            width: 22px;
+            height: 22px;
             flex-shrink: 0; /* prevent shrinking */
         }
 
