@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="SAP Modules" name="description"/>
+<meta content="SAP, TRM, Modules" name="keywords"/>
+<meta content="GDAConsultoria" name="author"/>
+<title>SAP &amp; TRM Hub</title>
+<link href="" rel="icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body {
+      background: linear-gradient(to bottom, #002244, #90d5ff, #f0ead6);
+      margin: 0;
+      min-height: 100vh;
+      background-attachment: fixed;
+      padding: 20px;
+      color: #000;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    body.dark-mode {
+      background: radial-gradient(circle, #080808 65%, #080808 75%, #444 100%);
+      color: #f5f5dc;
+    }
+
+    .head {
+      font: bolder 48px "Times New Roman";
+      background-color: #f0ead6;
+      color: #3a3734;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 7px #002244, -5px 5px 12px #002244;
+      text-shadow: 2px 2px 2px #002244;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      justify-content: center;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .head img {
+      height: 60px;
+      border-radius: 8px;
+    }
+
+    body.dark-mode .head {
+      background-color: #111;
+      color: #f5f5dc;
+      text-shadow: 1px 1px 2px #888;
+    }
+
+    .accordion-button:focus {
+      box-shadow: none;
+    }
+
+    .notes-container {
+      background-color: #fff;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00224488;
+      transition: background 0.3s ease;
+    }
+
+    body.dark-mode .notes-container {
+      background-color: #222;
+    }
+
+    .notes-container textarea {
+      width: 100%;
+      min-height: 120px;
+      resize: vertical;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .top-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .btn-nav {
+      background-color: #90d5ff;
+      color: #002244;
+      border: 1px solid #002244;
+      box-shadow: 2px 2px 4px #002244;
+      text-shadow: 1px 1px 1px #002244;
+    }
+
+    .btn-nav:hover {
+      background-color: #002244;
+      color: #90d5ff;
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+
+    .dark_light_mode_label {
+        display: flex;
+        align-items: center;
+        gap: 0px;
+        padding: 0px;
+        border-radius: 30px;
+        cursor: pointer;
+        position: relative;
+        width: fit-content;
+    }
+
+    .dark_light_mode_input{
+        display: none;
+    }
+    .dark_light_mode_selector {
+        width: 40px;
+        height: 19px;
+        border-radius: 24px;
+        position: relative;
+        flex-shrink: 0;
+        transition: background-color 0.3s;
+        border: 1px solid #00000066;
+    }
+
+    .dark_light_mode_selector::before {
+        content: "";
+        position: absolute;
+        top: 1px;
+        left: 2px;
+        width: 15px;
+        height: 15px;
+        background-color: white;
+        border-radius: 50%;
+        transition: transform 0.3s;
+    }
+
+    /* Knob moves 26px to the right when checked */
+    .dark_light_mode_input:checked ~ .dark_light_mode_selector::before {
+        transform: translateX(20px);
+    }
+
+    /* Background color changes on toggle */
+    .dark_light_mode_input:checked ~ .dark_light_mode_selector {
+        background-color: #444;
+    }
+
+    /* Icons size and spacing */
+    .light_mode img,
+    .dark_mode img {
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0; /* prevent shrinking */
+    }
+
+    .dark_light_mode_input:checked ~ .light_mode img,
+    .dark_light_mode_input:checked ~ .dark_mode img {
+        filter: invert(1);
+    }
+
+  </style>
+</head>
+<body>
+<label class="dark_light_mode_label">
+<input class="dark_light_mode_input" id="mode-toggle" type="checkbox"/>
+<span class="light_mode">
+<img alt="Light Mode" src="../lightmode.png"/>
+</span>
+<span class="dark_light_mode_selector"></span>
+<span class="dark_mode">
+<img alt="Dark Mode" src="../darkmode.png"/>
+</span>
+</label>
+<div class="container">
+<!-- Title -->
+<div class="head mb-4">
+<img alt="SAP Icon" src="../darkmode.png"/>
+<span data-bs-toggle="tooltip" title="Portuguese for 'Central Cashbox' used in SAP">TBB1 | Realizar Contabilização</span>
+</div>
+<!-- Navigation Buttons -->
+<div class="top-buttons mb-4">
+<button class="btn btn-nav" onclick="location.href='TRM_Hub.html'">🏠 Home</button>
+<div>
+<button class="btn btn-nav me-2" onclick="location.href='prev.html'">⬅️ Previous</button>
+<button class="btn btn-nav" onclick="location.href='next.html'">Next ➡️</button>
+</div>
+</div>
+<div class="alert alert-info shadow-sm mb-4">
+<strong>Goal / Objective:</strong> No goal found.</div>
+<!-- Steps -->
+<div class="accordion" id="accordionSteps"><div class="accordion-item"><h2 class="accordion-header" id="heading1"><button class="accordion-button collapsed" data-bs-target="#collapse1" data-bs-toggle="collapse" type="button">Step 1: 1.Acessar o App SAP Fiori</button></h2><div class="accordion-collapse collapse" id="collapse1"><div class="accordion-body"><ul><li>Procedimento:</li><li>Abra  o app Lançar fluxos(TBB1).</li></ul><img alt="Screenshot" class="img-fluid rounded mb-3" src="images\image 64.png"/><div></div></div></div></div><div class="accordion-item"><h2 class="accordion-header" id="heading2"><button class="accordion-button collapsed" data-bs-target="#collapse2" data-bs-toggle="collapse" type="button">Step 2: 2. Entrada de dados do lançamento</button></h2><div class="accordion-collapse collapse" id="collapse2"><div class="accordion-body"><ul><li>Procedimento:</li><li>Marcar a opção deDerivativos</li><li>Empresa:Exemplo:1000</li><li>Transação:Exemplo:4000000000042</li><li>Até inclusive vencimento:Exemplo:30.11.2024</li><li>Primeiroexecutar como testepara conferência.</li><li>Clique emEXECUTAR.</li><li>Clicar no botão para visualizar os lançamentos realizados.</li></ul><img alt="Screenshot" class="img-fluid rounded mb-3" src="images\image 65.png"/><div></div></div></div></div><div class="accordion-item"><h2 class="accordion-header" id="heading3"><button class="accordion-button collapsed" data-bs-target="#collapse3" data-bs-toggle="collapse" type="button">Step 3: 3. Verifique o log da execução</button></h2><div class="accordion-collapse collapse" id="collapse3"><div class="accordion-body"><ul><li>Verificar o log de execução</li><li>Clicar&lt;para retornar.</li></ul><img alt="Screenshot" class="img-fluid rounded mb-3" src="https://www.notion.so/icons/asterisk_yellow.svg"/><div></div></div></div></div><div class="accordion-item"><h2 class="accordion-header" id="heading4"><button class="accordion-button collapsed" data-bs-target="#collapse4" data-bs-toggle="collapse" type="button">Step 4: 4. Execução definitiva</button></h2><div class="accordion-collapse collapse" id="collapse4"><div class="accordion-body"><ul><li>Procedimento:</li><li>Desmarcar a execução de teste para realizar em efetivo</li><li>Clique emEXECUTAR.</li><li>Clicar no botão para visualizar os lançamentos realizados.</li></ul><img alt="Screenshot" class="img-fluid rounded mb-3" src="images\image 69.png"/><div></div></div></div></div></div>
+<!-- Notes -->
+<div class="notes-container mt-5">
+<h5>📝 Your Notes</h5>
+<textarea id="userNotes" placeholder="Write notes for this submodule..."></textarea>
+</div>
+</div>
+<!-- Bootstrap JS & Popper for accordion & tooltip -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const toggle = document.getElementById('mode-toggle');
+    toggle.addEventListener('change', () => {
+        document.body.classList.toggle('dark-mode', toggle.checked);
+    });
+
+    // Tooltips
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(el => new bootstrap.Tooltip(el));
+
+    // Notes memory
+    const notes = document.getElementById("userNotes");
+    notes.value = localStorage.getItem("sapNotes") || "";
+    notes.addEventListener("input", () => {
+      localStorage.setItem("sapNotes", notes.value);
+    });
+  </script>
+</body>
+</html>
