@@ -239,6 +239,30 @@
             border: 1px solid #08080866;
             color: antiquewhite;
         }
+
+        .footer {
+            bottom: 0px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            font-family: "Times New Roman", serif;
+            font-size: 18px;
+            color: #f0ead6;
+            background-color: rgba(0, 34, 68, 0.4);
+            padding: 8px 0;
+        }
+
+        .footer-icon {
+            width: 30px;
+            height: 30px;
+        }
+
+        .footer-text {
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body>
@@ -297,6 +321,11 @@
         <span class="explore">Explore sub-modules</span>
     </div>
 </div>
+
+<footer class="footer">
+    <img src="LogoGabe.png" alt="GDA Logo" class="footer-icon">
+    <span class="footer-text">GDA Consultoria 2025</span>
+</footer>
 
 <script>
     const toggle = document.getElementById('mode-toggle');
