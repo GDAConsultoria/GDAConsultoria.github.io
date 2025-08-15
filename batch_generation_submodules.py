@@ -2,6 +2,7 @@ import os
 import shutil
 import urllib.parse
 from bs4 import BeautifulSoup
+import re
 
 # Paths
 INPUT_FOLDER = "062c921f-fed7-4da7-87b7-e0736cad417e_Export-90b6bcb0-12ae-4ea7-908d-2192e732d8fc"
@@ -40,8 +41,40 @@ for root, dirs, files in os.walk(INPUT_FOLDER):
         output_filename = f"{safe_title}.html"
         output_path = os.path.join(OUTPUT_FOLDER, output_filename)
 
-        goal_div = data_soup.find("div", class_="callout")
-        goal_text = goal_div.get_text(strip=True) if goal_div else "No goal found."
+        goal_text = "No goal found."
+
+        goal_element = data_soup.find(
+            lambda tag: tag.name in ["p", "div", "strong", "span", "h2", "h3"] 
+            and re.search(r"objetivo", tag.get_text(strip=True), re.IGNORECASE)
+        )
+
+        if goal_element:
+            text_in_element = goal_element.get_text(" ", strip=True)
+
+            # Case 1: Objetivo and description in the same element
+            match = re.search(r"(?i)objetivo\s*[:\-]?\s*(.+)", text_in_element)
+            if match:
+                goal_text = match.group(1).strip()
+            else:
+                # Case 2: Description in following siblings
+                collected_parts = []
+                for sibling in goal_element.next_siblings:
+                    if getattr(sibling, "name", None) in ["h2", "h3"]:
+                        break
+                    if hasattr(sibling, "get_text") and sibling.get_text(strip=True).lower().startswith(("procedimento", "procedure")):
+                        break
+                    if hasattr(sibling, "get_text"):
+                        text = sibling.get_text(" ", strip=True)
+                        if text:
+                            collected_parts.append(text)
+                goal_text = " ".join(collected_parts).strip()
+
+            # Trim text at known stopping markers
+            stop_markers = ["jira", "vídeo", "procedimento", "procedure"]
+            pattern = r"\b(" + "|".join(stop_markers) + r")\b"
+            m = re.search(pattern, goal_text, flags=re.IGNORECASE)
+            if m:
+                goal_text = goal_text[:m.start()].strip()
 
         # Extract steps
         steps = []
